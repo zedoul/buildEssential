@@ -1,0 +1,9 @@
+name: "buildEssential"
+mirror_path: "http://ftp.acc.umu.se/mirror/CRAN/"
+minicran_path: "/Users/zedoul/Project/Temp/miniCRAN"
+library_path: "/Users/zedoul/Project/Temp/R"
+
+package_types:
+- source
+- win.binary
+- mac.binary

@@ -1,0 +1,9 @@
+package_names:
+- stringi
+- reshape2
+- plyr
+- tidyr
+- dplyr
+- ggplot2
+- scales
+- lattice
