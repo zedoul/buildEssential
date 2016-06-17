@@ -8,8 +8,12 @@ Maintainer: Kim Seonghyun <shyeon.kim@scipi.net>
 Description: A tool for miniCRAN setup
 Imports:
   miniCRAN,
-  yaml
+  yaml,
+  desc,
+  devtools
 Depends:
   R (>= 3.1.2),
 LazyData: true
 License: Apache License 2.0 | file LICENSE
+Suggests: knitr
+VignetteBuilder: knitr
