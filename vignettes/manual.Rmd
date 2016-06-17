@@ -1,0 +1,54 @@
+---
+title: "Manual"
+author: "Kim Seonghyun"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+The buildEssential is an R package that manages package dependency issues based on devtools and miniCRAN. It is intended for resolving dependency issues over multiple different network nodes in enterprise level. This aims to resolve those issues by easy-to-use APIs. The name is originated from [build-essential](http://packages.ubuntu.com/precise/build-essential) package.
+
+## How to Install
+
+```r
+install.packages("devtools")
+devtools::install_github("zedoul/buildEssential")
+```
+
+For those of you want to have more detailed introduction, see `inst/install.R` code.
+
+## How to Use
+
+I would recommend to start with writing two yaml files as follows:
+
+`setting.yml`:
+```yaml
+CRAN_url: http://ftp.acc.umu.se/mirror/CRAN/
+miniCRAN_path: /Users/zedoul/Project/Temp/miniCRAN1
+library_paths:
+- main: /Users/zedoul/Project/Temp/R
+  sub:  /Users/zedoul/Project/Temp/R2
+
+package_types:
+- source
+- win.binary
+- mac.binary
+```
+
+`descriptions.yml`:
+```yaml
+descriptions:
+- /Users/zedoul/Project/dplyr/DESCRIPTION
+- /Users/zedoul/Project/ggplot2/DESCRIPTION
+```
+
+- CRAN_url: Any CRAN mirror url.
+- miniCRAN_path: A directory for storing CRAN packages. Any of those package types is either source type or binary type.
+- library_paths: A set of search paths for R packages. See [this page](https://stat.ethz.ch/R-manual/R-devel/library/base/html/libPaths.html) for more detail. You may want to have more than one path.
+- package_types: source, win.binary, and mac.binary by default.
+- descriptions: A set of DESCRIPTION path to get target package names.
+
+Note that they use absolute paths only, not relative paths. See `inst/setup.R` as an example.

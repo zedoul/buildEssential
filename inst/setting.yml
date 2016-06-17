@@ -1,5 +1,5 @@
 CRAN_url: http://ftp.acc.umu.se/mirror/CRAN/
-minicran_path: /Users/zedoul/Project/Temp/miniCRAN
+miniCRAN_path: /Users/zedoul/Project/Temp/miniCRAN1
 library_paths:
 - main: /Users/zedoul/Project/Temp/R
   sub:  /Users/zedoul/Project/Temp/R2

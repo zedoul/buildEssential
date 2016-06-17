@@ -5,8 +5,8 @@
 #' You'll need to put parameters in order to do this. If those paths are not
 #' exist, then this function will create them.
 #'
-#' @param miniCRANpath A path of miniCRAN
-#' @param libpath A search path of the library tree which packages are stored
+#' @param miniCRAN_path A path of miniCRAN
+#' @param lib_path A search path of the library tree which packages are stored
 configure <- function(miniCRAN_path,
                       lib_path) {
   stopifnot(!missing(miniCRAN_path))
@@ -21,7 +21,7 @@ configure <- function(miniCRAN_path,
 #' Get build setting
 #'
 #' @param setting_path A path of setting file
-getSetting <- function(setting_path) {
+get_setting <- function(setting_path) {
   stopifnot(file.exists(setting_path))
 
   setting <- yaml.load_file(setting_path)
@@ -44,7 +44,7 @@ getSetting <- function(setting_path) {
 #' Get required package names
 #'
 #' @param description_paths A vector of DESCRIPTION paths
-getPackages <- function(description_path) {
+get_packages <- function(description_path) {
   descriptions <- yaml.load_file(description_path)
   descriptions <- descriptions[["descriptions"]]
 

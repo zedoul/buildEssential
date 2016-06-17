@@ -5,15 +5,17 @@ Version: 0.0.1
 Date: 2016-06-14
 Author: Kim Seonghyun [aut, cre]
 Maintainer: Kim Seonghyun <shyeon.kim@scipi.net>
-Description: A tool for miniCRAN setup
+Description: A tool for R package dependencies
 Imports:
-  miniCRAN,
-  yaml,
-  desc,
-  devtools
+    miniCRAN,
+    yaml,
+    desc,
+    devtools
 Depends:
-  R (>= 3.1.2),
+    R (>= 3.1.2),
 LazyData: true
 License: Apache License 2.0 | file LICENSE
-Suggests: knitr
+Suggests:
+    knitr,
+    rmarkdown
 VignetteBuilder: knitr

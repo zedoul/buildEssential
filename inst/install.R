@@ -3,10 +3,10 @@
 
 # Change this
 library_path <- "/Users/zedoul/Project/Temp/testR"
-CRAN_path <- "http://ftp.acc.umu.se/mirror/CRAN/"
+CRAN_url <- "http://ftp.acc.umu.se/mirror/CRAN/"
 package_names <- c("devtools")
 
-setupLibrary <- function(package_names, library_path, CRAN_path) {
+setupLibrary <- function(package_names, library_path, CRAN_url) {
   # Create library folder
   if (!dir.exists(library_path)) {
     dir.create(library_path)
@@ -19,10 +19,10 @@ setupLibrary <- function(package_names, library_path, CRAN_path) {
   }
 }
 
-options(repos = c(CRAN = CRAN_path))
+options(repos = c(CRAN = CRAN_url))
 .libPaths(library_path)
 
 # Setup user R library
-setupLibrary(package_names, library_path, CRAN_path)
+setupLibrary(package_names, library_path, CRAN_url)
 
 devtools::install_github("zedoul/buildEssential")

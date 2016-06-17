@@ -7,11 +7,11 @@ setting_path <- system.file("setting.yml",
 description_path <- system.file("descriptions.yml",
                                 package='buildEssential')
 
-setting <- getSetting(setting_path)
-packages <- getPackages(description_path)
+setting <- get_setting(setting_path)
+packages <- get_packages(description_path)
 
 # Load settings
-miniCRAN_path <- setting[["minicran_path"]]
+miniCRAN_path <- setting[["miniCRAN_path"]]
 CRAN_url <- setting[["CRAN_url"]]
 library_path <- setting[["library_paths"]]["main", ]
 package_types <- setting[["package_types"]]

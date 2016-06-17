@@ -53,8 +53,8 @@ add_CRAN_pkg <- function(package_name,
 #' @param CRAN_url A url of CRAN mirror
 #' @param package_types Types of package to be installed
 update_CRAN_pkgs <- function(miniCRAN_path,
-                            CRAN_url,
-                            package_type) {
+                             CRAN_url,
+                             package_type) {
   for (package_type in package_types) {
     miniCRAN::updatePackages(path = miniCRAN_path,
                              repos = CRAN_url,
