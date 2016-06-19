@@ -9,7 +9,18 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-The buildEssential is an R package that manages package dependency issues based on devtools and miniCRAN. It is intended for resolving dependency issues over multiple different network nodes in enterprise level. This aims to resolve those issues by easy-to-use APIs. The name is originated from [build-essential](http://packages.ubuntu.com/precise/build-essential) package.
+This source code is a package for R based on miniCRAN and devtools. It is
+intended for resolving dependency issues over multiple different network nodes
+in enterprise level.
+
+For example, imagine a scenario where you want to create a private repository
+consists of your package and its dependencies. But, this can be a hard problem
+if we hope to manage this over multiple servers with different user group
+privilege and even without the Internet connection for some nodes.
+
+This package aims to resolve those issues by easy-to-use APIs.
+The name is originated from
+[build-essential](http://packages.ubuntu.com/precise/build-essential) package.
 
 ## How to Install
 

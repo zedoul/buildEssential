@@ -49,7 +49,6 @@ get_packages <- function(description_path) {
   descriptions <- descriptions[["descriptions"]]
 
   pkgs <- c()
-
   for (description in descriptions) {
     stopifnot(any(file.exists(description), dir.exists(description)))
     deps <- desc::desc_get_deps(description)
