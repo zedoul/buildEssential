@@ -51,6 +51,8 @@ get_packages <- function(description_path) {
   pkgs <- c()
   for (description in descriptions) {
     stopifnot(any(file.exists(description), dir.exists(description)))
+
+    # TODO(kim.seonghyun): Consider miniCRAN::getCranDescription function
     deps <- desc::desc_get_deps(description)
     target_deps <- deps[, "type"] %in% c("Imports", "Suggests", "LinkingTo")
     pkgs <- c(pkgs, deps[target_deps, "package"])
