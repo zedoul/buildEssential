@@ -19,6 +19,7 @@ CRAN_url <- setting[["CRAN_url"]]
 library_path <- setting[["library_paths"]]
 src_pkg_paths <- setting[["source_package_paths"]]
 package_types <- setting[["package_types"]]
+miniCRAN_autoupdate <- as.logical(setting[["miniCRAN_autoupdate"]])
 
 # Setup MCran. At least it should contain source package folder
 if (!file.exists(file.path(miniCRAN_path, "src", "contrib", "PACKAGE"))) {
@@ -54,15 +55,19 @@ for (package_type in package_types) {
 }
 
 # Update miniCRAN packages
-update_CRAN_pkgs(miniCRAN_path,
-                 CRAN_url,
-                 package_types)
+if (miniCRAN_autoupdate == TRUE) {
+  update_CRAN_pkgs(miniCRAN_path,
+                   CRAN_url,
+                   package_types)
+}
 
 # Install library from miniCRAN
-# only installed version nothing else
 avail_installed_pkgs <- installed.packages(library_path)
+avail_pkgs_in_miniCRAN <- row.names(miniCRAN::pkgAvail(type = "source"))
+
 for (package_name in packages) {
-  if (!(package_name %in% avail_installed_pkgs)) {
+  if (all(!(package_name %in% avail_installed_pkgs),
+          package_name %in% avail_pkgs_in_miniCRAN)) {
     install_package(package_name)
   }
 }
