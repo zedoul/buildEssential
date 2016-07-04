@@ -3,7 +3,7 @@
 #' @param setting_path
 #' @param description_path
 #' @param miniCRAN_autoupdate
-setup <- function(setiting_path = NULL,
+setup <- function(setting_path = NULL,
                   description_path = NULL,
                   miniCRAN_autoupdate = F) {
   if (is.null(setting_path)) {
