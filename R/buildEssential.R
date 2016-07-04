@@ -1,4 +1,4 @@
-#' Setup buildEssential
+#' Configure buildEssential
 #'
 #' BuildEssential sets two environmental variables. One is a miniCRAN path by
 #' \code{options(repos)}, and another is a library path by \code{.libPaths}.
@@ -26,17 +26,11 @@ get_setting <- function(setting_path) {
 
   setting <- yaml.load_file(setting_path)
 
-  getLibPath <- function(library_paths) {
-    ret <- sapply(library_paths,
-                  FUN = function(x) {
-                    paste0(x, "/", version$major, ".", version$minor)
-                  })
-    colnames(ret) <- "libraryPath"
-    rownames(ret) <- names(library_paths[[1]])
-    return(ret)
+  getLibPath <- function(library_path) {
+    paste0(library_path, "/", version$major, ".", version$minor)
   }
 
-  setting[["library_paths"]] <- getLibPath(setting[["library_paths"]])
+  setting[["library_path"]] <- getLibPath(setting[["library_path"]])
 
   return (setting)
 }
@@ -51,6 +45,8 @@ get_packages <- function(description_path) {
   pkgs <- c()
   for (description in descriptions) {
     stopifnot(any(file.exists(description), dir.exists(description)))
+
+    # TODO(kim.seonghyun): Consider miniCRAN::getCranDescription function
     deps <- desc::desc_get_deps(description)
     target_deps <- deps[, "type"] %in% c("Imports", "Suggests", "LinkingTo")
     pkgs <- c(pkgs, deps[target_deps, "package"])
