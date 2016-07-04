@@ -66,7 +66,7 @@ setup <- function(setiting_path = NULL,
     for (package_name in packages) {
       if (!(package_name %in% available_package_names)) {
         tryCatch({
-          cat(paste("Add", package_name, "to miniCRAN...\n"))
+          cat(paste("Add", package_name, "and its dependencies to miniCRAN ...\n"))
           add_CRAN_pkg(package_name,
                        miniCRAN_path,
                        CRAN_url,
@@ -78,7 +78,7 @@ setup <- function(setiting_path = NULL,
     }
   }
 
-  cat("miniCRAN check complete\n")
+  cat("miniCRAN setup complete\n")
 
   # Update miniCRAN packages
   if (miniCRAN_autoupdate == TRUE) {
@@ -100,16 +100,6 @@ setup <- function(setiting_path = NULL,
       cat(paste("Install miniCRAN package:", package_name, "...\n"))
       install_package(package_name)
     }
-  }
-
-  # Update miniCRAN packages
-  update_CRAN_pkgs(miniCRAN_path,
-                   CRAN_url,
-                   package_types)
-
-  # Install library from miniCRAN
-  for (package_name in packages) {
-    install_package(package_name)
   }
 
   # Install library from source
