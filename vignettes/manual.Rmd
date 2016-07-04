@@ -9,14 +9,13 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-This source code is a package for R based on miniCRAN and devtools. It is
-intended for resolving dependency issues over multiple different network nodes
-in enterprise level.
+This R package is intended for resolving dependency issues over multiple
+different network nodes in enterprise level.
 
 For example, imagine a scenario where you want to create a private repository
 consists of your package and its dependencies. But, this can be a hard problem
 if we hope to manage this over multiple servers with different user group
-privilege and even without the Internet connection for some nodes.
+privilege, and even without the Internet connection for some nodes.
 
 This package aims to resolve those issues by easy-to-use APIs.
 The name is originated from
@@ -29,11 +28,15 @@ install.packages("devtools")
 devtools::install_github("zedoul/buildEssential")
 ```
 
+Then you will have R6, XML, buildEsential, crayon, curl, desc, devtools, digest, git2r, httr,
+jsonlite, memoise, mime, miniCRAN, openssl, rstudioapi, whisker, withr, yaml
+in your library path. Use .libPaths() command to see your library path.
+
 For those of you want to have more detailed introduction, see `inst/install.R` code.
 
 ## How to Use
 
-I would recommend to start with writing two yaml files as follows:
+First of all, I would recommend to start with writing two yaml files as follows:
 
 `setting.yml`:
 ```yaml

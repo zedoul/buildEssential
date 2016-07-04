@@ -23,7 +23,6 @@ setup <- function(setiting_path = NULL,
   cat(paste("setting file path:", setting_path, "\n"))
   cat(paste("description file path:", description_path, "\n"))
 
-  # Use paths if those path is accesiable
   setting <- get_setting(setting_path)
   packages <- get_packages(description_path)
 
@@ -101,6 +100,16 @@ setup <- function(setiting_path = NULL,
       cat(paste("Install miniCRAN package:", package_name, "...\n"))
       install_package(package_name)
     }
+  }
+
+  # Update miniCRAN packages
+  update_CRAN_pkgs(miniCRAN_path,
+                   CRAN_url,
+                   package_types)
+
+  # Install library from miniCRAN
+  for (package_name in packages) {
+    install_package(package_name)
   }
 
   # Install library from source

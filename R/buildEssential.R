@@ -24,7 +24,7 @@ configure <- function(miniCRAN_path,
 get_setting <- function(setting_path) {
   stopifnot(file.exists(setting_path))
 
-  setting <- yaml.load_file(setting_path)
+  setting <- yaml::yaml.load_file(setting_path)
 
   getLibPath <- function(library_path) {
     paste0(library_path, "/", version$major, ".", version$minor)
@@ -39,7 +39,7 @@ get_setting <- function(setting_path) {
 #'
 #' @param description_paths A vector of DESCRIPTION paths
 get_packages <- function(description_path) {
-  descriptions <- yaml.load_file(description_path)
+  descriptions <- yaml::yaml.load_file(description_path)
   descriptions <- descriptions[["descriptions"]]
 
   pkgs <- c()
