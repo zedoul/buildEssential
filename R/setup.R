@@ -62,9 +62,11 @@ setup <- function(setting_path = NULL,
   # Add miniCRAN packages
   for (package_type in package_types) {
     available_package_names <- row.names(miniCRAN::pkgAvail(type = package_type))
+    available_cranpkgs <- as.data.frame(available.packages(type = package_type))
 
     for (package_name in packages) {
-      if (!(package_name %in% available_package_names)) {
+      if (all(!(package_name %in% available_package_names),
+              !is.na(as.character(available_cranpkgs[package_name, "Package"])))) {
         tryCatch({
           cat(paste("Add", package_name, "and its dependencies to miniCRAN ...\n"))
           add_CRAN_pkg(package_name,
