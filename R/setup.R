@@ -37,7 +37,7 @@ setup <- function(setting_path = NULL,
   cat(paste("CRAN url:", CRAN_url,"\n"))
   cat(paste("R library path:", library_path,"\n"))
   cat(paste("Source package paths:", source_package_paths,"\n"))
-  cat(paste("package types:", miniCRAN_path,"\n"))
+  cat(paste("package types:", package_types,"\n"))
 
   # Setup MCran
   if (!dir.exists(miniCRAN_path)) {
