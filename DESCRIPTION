@@ -12,6 +12,7 @@ Imports:
     miniCRAN,
     yaml,
     desc,
+    RCurl,
     devtools
 License: Apache License 2.0 | file LICENSE
 Suggests:
