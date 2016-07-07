@@ -62,7 +62,8 @@ setup <- function(setting_path = NULL,
   # Add miniCRAN packages
   for (package_type in package_types) {
     available_package_names <- row.names(miniCRAN::pkgAvail(type = package_type))
-    available_cranpkgs <- as.data.frame(available.packages(type = package_type))
+    available_cranpkgs <- as.data.frame(available.packages(contriburl = contrib.url(CRAN_url),
+                                                           type = package_type))
 
     for (package_name in packages) {
       if (all(!(package_name %in% available_package_names),
