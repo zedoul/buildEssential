@@ -39,7 +39,7 @@ setup <- function(setting_path = NULL,
   cat(paste("Source package paths:", source_package_paths,"\n"))
   cat(paste("package types:", package_types,"\n"))
 
-  stopifnot(url.exists(CRAN_url))
+  stopifnot(RCurl::url.exists(CRAN_url))
 
   # Setup MCran
   if (!dir.exists(miniCRAN_path)) {
