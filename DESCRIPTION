@@ -7,7 +7,7 @@ Author: Kim Seonghyun [aut, cre]
 Maintainer: Kim Seonghyun <shyeon.kim@scipi.net>
 Description: A tool for R package dependencies
 Depends:
-    R (>= 3.1.2)
+    R (>= 3.2.0)
 Imports:
     miniCRAN,
     yaml,
