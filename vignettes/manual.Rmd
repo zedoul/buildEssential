@@ -27,9 +27,7 @@ install.packages("devtools", repos = 'http://cran.us.r-project.org')
 devtools::install_github("zedoul/buildr")
 ```
 
-Then you will have R6, XML, buildEsential, crayon, curl, desc, devtools, digest, git2r, httr,
-jsonlite, memoise, mime, miniCRAN, openssl, rstudioapi, whisker, withr, and yaml
-in your library path. Use .libPaths() command to see your library path.
+Then you will have buildr, desc, devtools, miniCRAN, yaml, or some other packages in your library path. Use .libPaths() command to see where your library path is located.
 
 ## Quickstart
 

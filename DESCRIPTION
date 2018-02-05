@@ -12,12 +12,12 @@ Depends:
     R (>= 3.2.0)
 Imports:
     RCurl,
-    devtools,
+    desc,
     miniCRAN,
     yaml
 License: Apache License 2.0 | file LICENSE
 Suggests:
-    desc,
+    devtools,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
