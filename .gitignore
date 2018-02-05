@@ -25,5 +25,3 @@ vignettes/*.pdf
 *.knit.md
 .Rproj.user
 inst/doc
-# This package do not need to have inst
-inst/*
