@@ -22,41 +22,47 @@ get_packages <- function(description_path) {
 setup <- function(description_path,
                   minicran_path,
                   cran_url = 'http://cran.us.r-project.org',
-                  package_types = 'source') {
+                  package_type = 'source') {
   stopifnot(file.exists(description_path))
   stopifnot(dir.exists(minicran_path))
-  if (!grepl(description_path, "DESCRIPTION")) {
+  if (!grepl("DESCRIPTION", description_path)) {
     warning("It seems not a DESCRIPTION file\n")
   }
 
-  packages <- get_packages(description_path)
+  packages_to_install <- get_packages(description_path)
 
-  cat("description file path:", description_path, "\n")
-  cat("miniCRAN path:", miniCRAN_path,"\n")
-  cat("CRAN url:", CRAN_url,"\n")
-  cat("R library path:", paste("\n-", .libPaths()), "\n")
-  cat("package types:", package_types,"\n")
-  stopifnot(RCurl::url.exists(CRAN_url))
+  cat("- DESCRIPTION:", description_path, "\n")
+  cat("- miniCRAN:", minicran_path,"\n")
+  cat("- CRAN:", cran_url,"\n")
+  cat("- R library:", paste("\n ", .libPaths()), "\n")
+  cat("- package type:", package_type,"\n")
+  cat("Start to setup miniCRAN...\n")
+  stopifnot(RCurl::url.exists(cran_url))
 
   # Add miniCRAN packages
-  for (package_type in package_types) {
-    .package_names <- row.names(miniCRAN::pkgAvail(type = package_type))
-    .pkg <- as.data.frame(available.packages(contriburl = contrib.url(CRAN_url),
+  .mpkgs <- row.names(miniCRAN::pkgAvail(repos = minicran_path,
+                                         type = package_type))
+  .cpkgs <- as.data.frame(available.packages(contriburl = contrib.url(cran_url),
                                              type = package_type))
 
-    for (package_name in packages) {
-      if (all(!(package_name %in% .package_names),
-              !is.na(as.character(.pkg[package_name, "Package"])))) {
-        tryCatch({
-          cat(paste("Add", package_name, " to miniCRAN ...\n"))
-          add_CRAN_pkg(package_name,
-                       miniCRAN_path,
-                       CRAN_url,
-                       package_type)
-        }, error = function(err) {
-          warning(err)
-        })
-      }
+  for (i in 1:length(packages_to_install)) {
+    package_name <- packages_to_install[i]
+    cat(paste0("[", i, "/", length(packages_to_install), "]: "),
+        "Add", package_name, "to miniCRAN ... ")
+
+    if (all(!(package_name %in% .mpkgs),
+            !is.na(as.character(.cpkgs[package_name, "Package"])))) {
+      cat("\n")
+      tryCatch({
+        add_cran_pkg(package_name,
+                     minicran_path,
+                     cran_url,
+                     package_type)
+      }, error = function(err) {
+        warning(err)
+      })
+    } else {
+      cat("already exists\n")
     }
   }
 

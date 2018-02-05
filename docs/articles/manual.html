@@ -80,7 +80,7 @@ devtools::<span class="kw">install_github</span>(<span class="st">"zedoul/buildr
 <h2 class="hasAnchor">
 <a href="#quickstart" class="anchor"></a>Quickstart</h2>
 <p>You’ll need to prepare an empty directory to store miniCRAN data.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">mkdir</span> -p <span class="st">"~/dir-to-store-miniCRAN"</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">mkdir</span> -p ~/dir-to-store-miniCRAN</code></pre></div>
 <p>Also, you’ll need to have a DESCRIPTION file from any package. If you have no DESCRIPTION file yet, then feel free to use DESCRIPTION file of <code>buildr</code> package.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">git</span> clone https://github.com/zedoul/buildr.git ~/buildr
 <span class="kw">&gt;</span> <span class="kw">cat</span> ~/buildr/DESCRIPTION <span class="kw">|</span> <span class="kw">more</span>
@@ -92,16 +92,14 @@ devtools::<span class="kw">install_github</span>(<span class="st">"zedoul/buildr
     <span class="kw">person</span>(<span class="st">"Kim"</span>, <span class="st">"Seonghyun"</span>, <span class="st">""</span>, <span class="st">"shyeon.kim@scipi.net"</span>, c(<span class="st">"aut"</span>, <span class="st">"cre"</span>))
     )</code></pre></div>
 <p>Then, you are ready to create your own miniCRAN repository.</p>
-<p>Use <code>init_minicran</code> function to initialise the repository.</p>
+<p>Use <code>init_minicran</code> function to initialise the repository. It will take a long time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(buildr)
-cran_ath =<span class="st"> "~/dir-to-store-miniCRAN"</span>
-<span class="kw"><a href="../reference/init_minicran.html">init_minicran</a></span>(.path)
-desc_path =<span class="st"> "~/buildr/DESCRIPTION"</span>
-<span class="kw"><a href="../reference/setup.html">setup</a></span>(desc_path)</code></pre></div>
-</div>
-<div id="note-that-they-use-absolute-paths-only-not-relative-paths-" class="section level1">
-<h1 class="hasAnchor">
-<a href="#note-that-they-use-absolute-paths-only-not-relative-paths-" class="anchor"></a>Note that they use absolute paths only, not relative paths.</h1>
+
+minicran_path &lt;-<span class="st"> "~/dir-to-store-miniCRAN"</span>
+<span class="kw"><a href="../reference/init_minicran.html">init_minicran</a></span>(minicran_path)
+desc_path &lt;-<span class="st"> "~/buildr/DESCRIPTION"</span>
+<span class="kw"><a href="../reference/setup.html">setup</a></span>(desc_path, minicran_path)</code></pre></div>
+<p>Note that I tested it on OSX only. Feel free create tickets on <a href="https://github.com/zedoul/buildr/issues">GitHub</a> if you face any issues.</p>
 </div>
 </div>
   </div>
@@ -113,7 +111,6 @@ desc_path =<span class="st"> "~/buildr/DESCRIPTION"</span>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#how-to-install">How to Install</a></li>
       <li><a href="#quickstart">Quickstart</a></li>
-      <li><a href="#note-that-they-use-absolute-paths-only-not-relative-paths-">Note that they use absolute paths only, not relative paths.</a></li>
       </ul>
 </div>
       </div>

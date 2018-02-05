@@ -11,6 +11,7 @@ reference:
   contents:
   - add_cran_pkg
   - update_cran_pkg
+  - install_package
 
 navbar:
   type: default

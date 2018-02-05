@@ -36,7 +36,7 @@ in your library path. Use .libPaths() command to see your library path.
 You'll need to prepare an empty directory to store miniCRAN data.
 
 ```bash
-> mkdir -p "~/dir-to-store-miniCRAN"
+> mkdir -p ~/dir-to-store-miniCRAN
 ```
 
 Also, you'll need to have a DESCRIPTION file from any package.
@@ -57,13 +57,16 @@ Authors@R: c(
 Then, you are ready to create your own miniCRAN repository.
 
 Use `init_minicran` function to initialise the repository.
+It will take a long time.
 
 ```r
 library(buildr)
-cran_ath = "~/dir-to-store-miniCRAN"
-init_minicran(.path)
-desc_path = "~/buildr/DESCRIPTION"
-setup(desc_path)
+
+minicran_path <- "~/dir-to-store-miniCRAN"
+init_minicran(minicran_path)
+desc_path <- "~/buildr/DESCRIPTION"
+setup(desc_path, minicran_path)
 ```
 
-#Note that they use absolute paths only, not relative paths.
+Note that I tested it on OSX only.
+Feel free create tickets on [GitHub](https://github.com/zedoul/buildr/issues) if you face any issues.

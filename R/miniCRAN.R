@@ -14,14 +14,14 @@ init_minicran <- function(minicran_path,
             "\nit will be created automatically")
     dir.create(minicran_path, recursive = T)
   }
-  stopifnot(RCurl::url.exists(CRAN_url))
+  stopifnot(RCurl::url.exists(cran_url))
 
   # Create empty folders for each package types
   # We cannot set pkg as NULL, otherwise we will face a bug when we try to use
   # addPackages function. So we put devtools instead, which is essential.
   package_name <- c("devtools")
   pkgList <- miniCRAN::pkgDep(pkg = package_name,
-                              repos = c(cran = cran_url))
+                              repos = c(CRAN = cran_url))
   for (package_type in package_types) {
     miniCRAN::makeRepo(pkgs = pkgList,
                        path = minicran_path,
@@ -47,7 +47,7 @@ add_cran_pkg <- function(package_name,
   stopifnot(dir.exists(minicran_path))
 
   pkgList <- miniCRAN::pkgDep(pkg = package_name,
-                              repos = c(cran = cran_url))
+                              repos = c(CRAN = cran_url))
 
   for (package_type in package_types) {
     miniCRAN::addPackage(pkgs = pkgList,

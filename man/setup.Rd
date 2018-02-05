@@ -5,7 +5,7 @@
 \title{Setup Your Build Essentials}
 \usage{
 setup(description_path, minicran_path,
-  cran_url = "http://cran.us.r-project.org", package_types = "source")
+  cran_url = "http://cran.us.r-project.org", package_type = "source")
 }
 \arguments{
 \item{description_path}{to DESCRIPTION}
