@@ -1,0 +1,26 @@
+home:
+  strip_header: true
+
+reference:
+- title: setup
+  contents:
+  - init_minicran
+  - setup
+
+- title: maintenance
+  contents:
+  - add_cran_pkg
+  - update_cran_pkg
+
+navbar:
+  type: default
+  left:
+  - text: Intro
+    href: articles/manual.html
+  - text: Reference
+    href: reference/index.html
+  - text: News
+    href: news/index.html
+  right:
+  - icon: fa-github fa-lg
+    href: https://github.com/zedoul/buildr

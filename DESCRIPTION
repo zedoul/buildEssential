@@ -1,4 +1,4 @@
-Package: buildEssential
+Package: buildr
 Type: Package
 Title: Build Essential
 Version: 0.0.1
@@ -11,13 +11,13 @@ Description: A tool for R package dependencies
 Depends:
     R (>= 3.2.0)
 Imports:
-    miniCRAN,
-    yaml,
-    desc,
     RCurl,
-    devtools
+    devtools,
+    miniCRAN,
+    yaml
 License: Apache License 2.0 | file LICENSE
 Suggests:
+    desc,
     knitr,
     rmarkdown
 VignetteBuilder: knitr

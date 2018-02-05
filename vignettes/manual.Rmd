@@ -9,60 +9,61 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-This R package is intended for resolving dependency issues over multiple
-different network nodes in enterprise level.
+This R package is intended for resolving dependency issues over different computers in enterprise level.
 
 For example, imagine a scenario where you want to create a private repository
 consists of your package and its dependencies. But, this can be a hard problem
 if we hope to manage this over multiple servers with different user group
-privilege, and even without the Internet connection for some nodes.
+privilege. They may not be even able to have the Internet connection for some reasons.
 
 This package aims to resolve those issues by easy-to-use APIs.
 The name is originated from
-[build-essential](http://packages.ubuntu.com/precise/build-essential) package.
+[build-essential](https://packages.ubuntu.com/search?keywords=build-essential) package.
 
 ## How to Install
 
 ```r
-install.packages("devtools")
-devtools::install_github("zedoul/buildEssential")
+install.packages("devtools", repos = 'http://cran.us.r-project.org')
+devtools::install_github("zedoul/buildr")
 ```
 
 Then you will have R6, XML, buildEsential, crayon, curl, desc, devtools, digest, git2r, httr,
-jsonlite, memoise, mime, miniCRAN, openssl, rstudioapi, whisker, withr, yaml
+jsonlite, memoise, mime, miniCRAN, openssl, rstudioapi, whisker, withr, and yaml
 in your library path. Use .libPaths() command to see your library path.
 
-For those of you want to have more detailed introduction, see `inst/install.R` code.
+## Quickstart
 
-## How to Use
+You'll need to prepare an empty directory to store miniCRAN data.
 
-First of all, I would recommend to start with writing two yaml files as follows:
-
-`setting.yml`:
-```yaml
-CRAN_url: http://ftp.acc.umu.se/mirror/CRAN/
-miniCRAN_path: /Users/zedoul/Project/Temp/miniCRAN1
-library_paths:
-- main: /Users/zedoul/Project/Temp/R
-  sub:  /Users/zedoul/Project/Temp/R2
-
-package_types:
-- source
-- win.binary
-- mac.binary
+```bash
+> mkdir -p "~/dir-to-store-miniCRAN"
 ```
 
-`descriptions.yml`:
-```yaml
-descriptions:
-- /Users/zedoul/Project/dplyr/DESCRIPTION
-- /Users/zedoul/Project/ggplot2/DESCRIPTION
+Also, you'll need to have a DESCRIPTION file from any package.
+If you have no DESCRIPTION file yet, then feel free to use DESCRIPTION file of `buildr` package.
+
+```bash
+> git clone https://github.com/zedoul/buildr.git ~/buildr
+> cat ~/buildr/DESCRIPTION | more
+Type: Package
+Title: Build Essential
+Version: 0.0.1
+Date: 2016-06-14
+Authors@R: c(
+    person("Kim", "Seonghyun", "", "shyeon.kim@scipi.net", c("aut", "cre"))
+    )
 ```
 
-- CRAN_url: Any CRAN mirror url.
-- miniCRAN_path: A directory for storing CRAN packages. Any of those package types is either source type or binary type.
-- library_paths: A set of search paths for R packages. See [this page](https://stat.ethz.ch/R-manual/R-devel/library/base/html/libPaths.html) for more detail. You may want to have more than one path.
-- package_types: source, win.binary, and mac.binary by default.
-- descriptions: A set of DESCRIPTION path to get target package names.
+Then, you are ready to create your own miniCRAN repository.
 
-Note that they use absolute paths only, not relative paths. See `inst/setup.R` as an example.
+Use `init_minicran` function to initialise the repository.
+
+```r
+library(buildr)
+cran_ath = "~/dir-to-store-miniCRAN"
+init_minicran(.path)
+desc_path = "~/buildr/DESCRIPTION"
+setup(desc_path)
+```
+
+#Note that they use absolute paths only, not relative paths.
