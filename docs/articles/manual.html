@@ -82,7 +82,7 @@ devtools::<span class="kw">install_github</span>(<span class="st">"zedoul/buildr
 <p>You’ll need to prepare an empty directory to store miniCRAN data.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">mkdir</span> -p ~/dir-to-store-miniCRAN</code></pre></div>
 <p>Also, you’ll need to have a DESCRIPTION file from the package that you want to prepare.</p>
-<p>Just for quickstart demmo, we will use DESCRIPTION file of <code>buildr</code> package in this documentation.</p>
+<p>Just for quickstart demo, we will use DESCRIPTION file of <code>buildr</code> package.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">&gt;</span> <span class="kw">git</span> clone https://github.com/zedoul/buildr.git ~/buildr
 <span class="kw">&gt;</span> <span class="kw">cat</span> ~/buildr/DESCRIPTION <span class="kw">|</span> <span class="kw">more</span>
 <span class="kw">Type</span>: Package
@@ -92,8 +92,12 @@ devtools::<span class="kw">install_github</span>(<span class="st">"zedoul/buildr
 <span class="kw">Authors@R</span>: c(
     <span class="kw">person</span>(<span class="st">"Kim"</span>, <span class="st">"Seonghyun"</span>, <span class="st">""</span>, <span class="st">"shyeon.kim@scipi.net"</span>, c(<span class="st">"aut"</span>, <span class="st">"cre"</span>))
     )</code></pre></div>
-<p>Then, you are ready to create your own miniCRAN repository.</p>
-<p>Use <code>init_minicran</code> function to initialise the repository and <code>setup</code> function to add packages into miniCRAN. It will take a long time.</p>
+<p>Finally, you are ready to create your own miniCRAN repository.</p>
+<ul>
+<li>Use <code>init_minicran</code> function to initialise the repository</li>
+<li>And use<code>setup</code> function to add packages into miniCRAN</li>
+</ul>
+<p>It will take a long time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(buildr)
 
 minicran_path &lt;-<span class="st"> "~/dir-to-store-miniCRAN"</span>
