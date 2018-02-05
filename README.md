@@ -2,7 +2,7 @@
 Resolve package dependency issues in R environment over computers
 for your target packages.
 
-# What is the buildEseential
+# What is the buildr
 This source code is a package for R based on miniCRAN and devtools. It is
 intended for resolving dependency issues over multiple computers
 in enterprise level.
@@ -10,10 +10,10 @@ The name is originated from
 [build-essential](https://packages.ubuntu.com/search?keywords=build-essential).
 
 # What do I need
-All dependencies will be installed by using
+All dependencies of buildr will be installed by using
 `devtools::install_github('zedoul/buildr')`, which means you need to
 have a computer that has R and the Internet connection.
-There is no cran version of `buildr` yet.
+There is no CRAN version of `buildr` yet.
 
 In short,
 

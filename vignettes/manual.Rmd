@@ -37,8 +37,9 @@ You'll need to prepare an empty directory to store miniCRAN data.
 > mkdir -p ~/dir-to-store-miniCRAN
 ```
 
-Also, you'll need to have a DESCRIPTION file from any package.
-If you have no DESCRIPTION file yet, then feel free to use DESCRIPTION file of `buildr` package.
+Also, you'll need to have a DESCRIPTION file from the package that you want to prepare.
+
+Just for quickstart demmo, we will use DESCRIPTION file of `buildr` package in this documentation.
 
 ```bash
 > git clone https://github.com/zedoul/buildr.git ~/buildr
@@ -54,7 +55,7 @@ Authors@R: c(
 
 Then, you are ready to create your own miniCRAN repository.
 
-Use `init_minicran` function to initialise the repository.
+Use `init_minicran` function to initialise the repository and `setup` function to add packages into miniCRAN.
 It will take a long time.
 
 ```r
